@@ -1,0 +1,12 @@
+#logowanie
+az login
+# tworzenie RG
+az group create -l eastus -n chestai
+# service plan dla aplikacji PaaS
+az appservice plan create --name myAppServicePlanChestAI --resource-group chestai --sku FREE 
+# aplikacja www w ramach tego service planu
+az webapp create --resource-group chestai --plan myAppServicePlanChestAI --name myWebAppChessAI --runtime "PHP|7.0"
+# zrodlo aplikacji -> github.com
+az webapp deployment source config --name myWebAppChessAI --resource-group chestai --repo-url https://github.com/djkormo/simple-chess-ai --branch master --manual-integration
+# usuniecie wszelkich zasobow w ramach RG
+az group delete -n chestai

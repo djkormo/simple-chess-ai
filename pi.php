@@ -1,6 +1,6 @@
 <?php
 $pi = 4; $top = 4; $bot = 3; $minus = TRUE;
-$accuracy = 1000;
+$accuracy = 10000;
 
 for($i = 0; $i < $accuracy; $i++)
 {
